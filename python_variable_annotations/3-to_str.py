@@ -13,4 +13,5 @@
 
 
 def to_str(n: float) -> str:
+    """Funct to type string"""
     return str(n)
