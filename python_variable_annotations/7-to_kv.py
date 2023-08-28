@@ -14,4 +14,5 @@ from typing import Tuple, Union
 
 
 def to_kv(k: str, v: Union[int, float]) -> Tuple[str, float]:
+    """Funct to return a tuple[Str, Float]"""
     return (k, v*v)
