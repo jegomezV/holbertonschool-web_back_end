@@ -8,4 +8,5 @@ mongo_collection will be the pymongo collection object
 """
 
 def list_all(mongo_collection):
+    """function that lists all documents in a collection:"""
     return [document for document in mongo_collection.find()]
