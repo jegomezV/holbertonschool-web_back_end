@@ -7,6 +7,6 @@ Return an empty list if no document in the collection
 mongo_collection will be the pymongo collection object
 """
 
-def list_all(mongo_collection):
+def list_all(mongo_collection) -> list:
     """function that lists all documents in a collection:"""
     return [document for document in mongo_collection.find()]
