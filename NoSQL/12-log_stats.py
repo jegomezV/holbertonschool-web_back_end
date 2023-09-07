@@ -23,7 +23,7 @@ if __name__ == "__main__":
 
     methods = ["GET", "POST", "PUT", "PATCH", "DELETE"]
     client = MongoClient('mongodb://127.0.0.1:27017')
-    ngix = client.logs.ngix
+    ngix = client.logs.nginx
 
     count = ngix.count_documents({})
     print("{} logs".format(count))
