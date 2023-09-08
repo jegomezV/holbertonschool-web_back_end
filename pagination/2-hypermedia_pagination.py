@@ -46,6 +46,15 @@ class Server:
         return self.dataset()[index[0]: index[1]]
 
 
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+    The function should return a tuple of size two containing
+    a start index and an end index corresponding to the range of indexes
+    to return in a list for those particular pagination parameters.
+    """
+    return ((page - 1) * page_size, page * page_size)
+
+
     def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
         """return a dictionary containing the following key-value pairs """
         try:
@@ -71,12 +80,3 @@ class Server:
                 "total_pages": int(len(self.dataset()) / page_size),
         }
         return dict
-
-
-def index_range(page: int, page_size: int) -> Tuple[int, int]:
-    """
-    The function should return a tuple of size two containing
-    a start index and an end index corresponding to the range of indexes
-    to return in a list for those particular pagination parameters.
-    """
-    return ((page - 1) * page_size, page * page_size)
