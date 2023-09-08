@@ -46,31 +46,31 @@ class Server:
         return self.dataset()[index[0]: index[1]]
 
 
-def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
-    """return a dictionary containing the following key-value pairs """
-    try:
-        if len(self.get_page(page + 1, page_size)) < page_size:
+    def get_hyper(self, page: int = 1, page_size: int = 10) -> dict:
+        """return a dictionary containing the following key-value pairs """
+        try:
+            if len(self.get_page(page + 1, page_size)) < page_size:
+                next_page = None
+            else:
+                next_page = page + 1
+        except Exception:
             next_page = None
-        else:
-            next_page = page + 1
-    except Exception:
-        next_page = None
 
-    try:
-        self.get_page(page - 1, page_size)
-        prev_page = page - 1
-    except Exception:
-        prev_page = None
+        try:
+            self.get_page(page - 1, page_size)
+            prev_page = page - 1
+        except Exception:
+            prev_page = None
 
-    dict = {
-            "page_size": page_size,
-            "page": page,
-            "data": self.get_page(page, page_size),
-            "next_page": next_page,
-            "prev_page": prev_page,
-            "total_pages": int(len(self.dataset()) / page_size),
-    }
-    return dict
+        dict = {
+                "page_size": page_size,
+                "page": page,
+                "data": self.get_page(page, page_size),
+                "next_page": next_page,
+                "prev_page": prev_page,
+                "total_pages": int(len(self.dataset()) / page_size),
+        }
+        return dict
 
 
 def index_range(page: int, page_size: int) -> Tuple[int, int]:
